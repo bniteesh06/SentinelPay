@@ -11,7 +11,61 @@
 </head>
 <body>
 
-  <!-- Person A's navbar + hero code goes here -->
+<header id="navbar">
+  <div class="container navbar__inner">
+    <a href="#" class="navbar__logo">SentinelPay</a>
+
+    <nav class="navbar__links" id="navLinks">
+      <a href="#features">How it works</a>
+      <a href="#stats">Why it matters</a>
+      <a href="#about">About</a>
+    </nav>
+
+    <button class="navbar__cta">Request a demo</button>
+
+    <button class="navbar__toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+</header>
+
+<section id="hero">
+  <div class="container hero__inner">
+    <div class="hero__content">
+      <h1 class="hero__headline">
+        Every transaction tells a story.<br>
+        Some of them are lying.
+      </h1>
+      <p class="hero__subtext">
+        SentinelPay scores every transaction the moment it happens,
+        combining rule-based checks with machine learning to flag
+        what looks wrong, so your team only reviews what matters.
+      </p>
+      <div class="hero__actions">
+        <button class="btn btn--primary">See it in action</button>
+        <button class="btn btn--ghost">View documentation</button>
+      </div>
+    </div>
+
+    <div class="hero__visual" aria-hidden="true">
+      <div class="tx-node tx-node--safe"></div>
+      <div class="tx-node tx-node--safe"></div>
+      <div class="tx-node tx-node--flag"></div>
+      <div class="tx-node tx-node--safe"></div>
+      <div class="tx-node tx-node--safe"></div>
+      <div class="tx-node tx-node--safe"></div>
+      <div class="tx-node tx-node--flag"></div>
+      <div class="tx-node tx-node--safe"></div>
+      <div class="tx-node tx-node--safe"></div>
+      <div class="tx-node tx-node--safe"></div>
+      <div class="tx-node tx-node--safe"></div>
+      <div class="tx-node tx-node--flag"></div>
+    </div>
+  </div>
+</section>
+
 
   <!-- Person B's features code goes here -->
 
