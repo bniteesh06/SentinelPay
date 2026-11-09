@@ -1,4 +1,5 @@
 // SentinelPay script.js
+//Person A: Header, Hero, Features
 const navToggle = document.getElementById('navToggle');
 const navLinks = document.getElementById('navLinks');
 
