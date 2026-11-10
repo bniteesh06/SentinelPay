@@ -114,7 +114,7 @@ A complete Postman collection is included in the project:
 ---
 
 ## 🌐 Deployment Configuration
-* **Backend (Render):** Defined in [`render.yaml`](./render.yaml). Point your Render web service to the `server/` root directory with build command `npm install` and start command `npm start`.
+* **Backend (Node/Express):** Point your hosting web service to the `server/` root directory with build command `npm install` and start command `npm start`.
 * **Frontend (Vercel / Netlify):**  
   * Vercel SPA routing configured in [`client/vercel.json`](./client/vercel.json).  
   * Netlify deployment configured in [`client/netlify.toml`](./client/netlify.toml).
