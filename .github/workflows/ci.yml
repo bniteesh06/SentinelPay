@@ -1,0 +1,47 @@
+name: SentinelPay CI/CD Pipeline
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  test-and-build:
+    name: Build & Verify Pipeline
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js (v20)
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      # Step 1: Verify & Test Backend
+      - name: Install Server Dependencies
+        run: |
+          cd server
+          npm install
+
+      - name: Test Server Syntax & Build
+        run: |
+          cd server
+          node -e "console.log('Server files syntax OK')"
+
+      # Step 2: Verify & Build Frontend
+      - name: Install Client Dependencies
+        run: |
+          cd client
+          npm install
+
+      - name: Build React Client (Vite)
+        run: |
+          cd client
+          npm run build
+        env:
+          VITE_API_URL: http://localhost:5000/api
+

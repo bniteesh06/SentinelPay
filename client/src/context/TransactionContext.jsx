@@ -145,20 +145,6 @@ export function TransactionProvider({ children }) {
 
 export function useTransactions() {
   const context = useContext(TransactionContext);
-  if (!context) {
-    return {
-      transactions: [],
-      addTransaction: async (data) => data,
-      reviewTransaction: async () => {},
-      flaggedCount: 0,
-      isLoading: false,
-      isServerConnected: false,
-      isStreaming: false,
-      toggleStream: () => {},
-      streamAlert: null,
-      refresh: async () => {},
-    };
-  }
+  if (!context) throw new Error('useTransactions must be used within TransactionProvider');
   return context;
 }
-

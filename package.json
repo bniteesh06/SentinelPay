@@ -1,0 +1,15 @@
+{
+  "name": "sentinelpay-monorepo",
+  "version": "1.0.0",
+  "description": "SentinelPay: Real-Time Fraud Detection & Review System (Full Stack Development - CS3301)",
+  "scripts": {
+    "dev:client": "cd client && npm run dev",
+    "dev:server": "cd server && npm run dev",
+    "build": "cd client && npm run build",
+    "install:all": "cd client && npm install && cd ../server && npm install",
+    "seed": "cd server && npm run seed"
+  },
+  "author": "Niteesh Balajee",
+  "license": "ISC"
+}
+
