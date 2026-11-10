@@ -7,9 +7,9 @@
     "dev:server": "cd server && npm run dev",
     "build": "cd client && npm run build",
     "install:all": "cd client && npm install && cd ../server && npm install",
-    "seed": "cd server && npm run seed"
+    "seed": "cd server && npm run seed",
+    "start": "node server/src/server.js"
   },
   "author": "Niteesh Balajee",
   "license": "ISC"
 }
-
