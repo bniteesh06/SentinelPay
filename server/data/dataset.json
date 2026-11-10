@@ -1,159 +1,1270 @@
 {
   "seed": [
     {
-      "transactionId": "TXN-9042",
-      "sender": "Robert King",
-      "amount": 6500.0,
-      "origin": "foreign_high_risk",
-      "country": "International",
-      "isForeign": true,
-      "timeHour": 2,
-      "velocity": 5,
-      "locationMatch": false,
-      "riskScore": 95,
-      "status": "FLAGGED",
-      "reasons": [
-        "High value transaction (> $5,000)",
-        "High-risk international IP jurisdiction",
-        "Unusual midnight hour (2:00 AM)",
-        "Velocity spike (5 txns in 15 mins)",
-        "Billing location and device IP mismatch"
-      ],
-      "reviewedBy": null,
-      "reviewedAt": null,
-      "reviewerNotes": null
-    },
-    {
-      "transactionId": "TXN-6521",
-      "sender": "Emily Watson",
-      "amount": 45.0,
-      "origin": "domestic",
-      "country": "Domestic",
-      "isForeign": false,
-      "timeHour": 14,
-      "velocity": 1,
-      "locationMatch": true,
-      "riskScore": 5,
-      "status": "SAFE",
-      "reasons": ["Standard baseline matched"],
-      "reviewedBy": null,
-      "reviewedAt": null,
-      "reviewerNotes": null
-    },
-    {
-      "transactionId": "TXN-7734",
-      "sender": "Marcus Vance",
-      "amount": 2400.0,
-      "origin": "foreign",
-      "country": "International",
-      "isForeign": true,
-      "timeHour": 3,
-      "velocity": 2,
-      "locationMatch": true,
-      "riskScore": 57,
-      "status": "FLAGGED",
-      "reasons": [
-        "Elevated transaction amount (> $2,000)",
-        "Cross-border foreign card payment",
-        "Unusual midnight hour (3:00 AM)",
-        "Elevated velocity (2 txns)"
-      ],
-      "reviewedBy": null,
-      "reviewedAt": null,
-      "reviewerNotes": null
-    },
-    {
-      "transactionId": "TXN-1209",
-      "sender": "Sophia Chen",
-      "amount": 128.5,
-      "origin": "domestic",
-      "country": "Domestic",
-      "isForeign": false,
-      "timeHour": 11,
-      "velocity": 1,
-      "locationMatch": true,
-      "riskScore": 5,
-      "status": "SAFE",
-      "reasons": ["Standard baseline matched"],
-      "reviewedBy": null,
-      "reviewedAt": null,
-      "reviewerNotes": null
-    },
-    {
-      "transactionId": "TXN-4482",
-      "sender": "Liam Gallagher",
-      "amount": 7200.0,
-      "origin": "foreign_high_risk",
-      "country": "International",
+      "transactionId": "TXN-KAG-4022",
+      "sender": "Jason Murphy",
+      "merchant": "Rutherford-Mertz",
+      "category": "grocery_pos",
+      "amount": 281.06,
+      "country": "Collettsville, NC",
       "isForeign": true,
       "timeHour": 1,
       "velocity": 4,
       "locationMatch": false,
-      "riskScore": 99,
+      "riskScore": 84,
       "status": "FLAGGED",
       "reasons": [
-        "High value transaction (> $5,000)",
-        "High-risk international IP jurisdiction",
-        "Unusual midnight hour (1:00 AM)",
-        "Velocity spike (4 txns in 15 mins)",
-        "Billing location and device IP mismatch"
-      ],
-      "reviewedBy": null,
-      "reviewedAt": null,
-      "reviewerNotes": null
+        "Kaggle Ground-Truth Fraud Flag (Category: grocery_pos)",
+        "Abnormal transaction volume ($281.06)",
+        "Off-peak execution hour (01:00 AM)",
+        "Terminal location anomaly"
+      ]
+    },
+    {
+      "transactionId": "TXN-KAG-d3f5",
+      "sender": "Misty Hart",
+      "merchant": "Jenkins, Hauck and Friesen",
+      "category": "gas_transport",
+      "amount": 11.52,
+      "country": "San Antonio, TX",
+      "isForeign": true,
+      "timeHour": 1,
+      "velocity": 4,
+      "locationMatch": false,
+      "riskScore": 76,
+      "status": "FLAGGED",
+      "reasons": [
+        "Kaggle Ground-Truth Fraud Flag (Category: gas_transport)",
+        "Off-peak execution hour (01:00 AM)",
+        "Terminal location anomaly"
+      ]
+    },
+    {
+      "transactionId": "TXN-KAG-aa8c",
+      "sender": "Misty Hart",
+      "merchant": "Goodwin-Nitzsche",
+      "category": "grocery_pos",
+      "amount": 276.31,
+      "country": "San Antonio, TX",
+      "isForeign": true,
+      "timeHour": 3,
+      "velocity": 4,
+      "locationMatch": false,
+      "riskScore": 84,
+      "status": "FLAGGED",
+      "reasons": [
+        "Kaggle Ground-Truth Fraud Flag (Category: grocery_pos)",
+        "Abnormal transaction volume ($276.31)",
+        "Off-peak execution hour (03:00 AM)",
+        "Terminal location anomaly"
+      ]
+    },
+    {
+      "transactionId": "TXN-KAG-14e4",
+      "sender": "Jason Murphy",
+      "merchant": "Erdman-Kertzmann",
+      "category": "gas_transport",
+      "amount": 7.03,
+      "country": "Collettsville, NC",
+      "isForeign": true,
+      "timeHour": 3,
+      "velocity": 4,
+      "locationMatch": false,
+      "riskScore": 76,
+      "status": "FLAGGED",
+      "reasons": [
+        "Kaggle Ground-Truth Fraud Flag (Category: gas_transport)",
+        "Off-peak execution hour (03:00 AM)",
+        "Terminal location anomaly"
+      ]
+    },
+    {
+      "transactionId": "TXN-KAG-185a",
+      "sender": "Misty Hart",
+      "merchant": "Koepp-Parker",
+      "category": "grocery_pos",
+      "amount": 275.73,
+      "country": "San Antonio, TX",
+      "isForeign": true,
+      "timeHour": 3,
+      "velocity": 4,
+      "locationMatch": false,
+      "riskScore": 84,
+      "status": "FLAGGED",
+      "reasons": [
+        "Kaggle Ground-Truth Fraud Flag (Category: grocery_pos)",
+        "Abnormal transaction volume ($275.73)",
+        "Off-peak execution hour (03:00 AM)",
+        "Terminal location anomaly"
+      ]
+    },
+    {
+      "transactionId": "TXN-KAG-b302",
+      "sender": "Jason Murphy",
+      "merchant": "Medhurst PLC",
+      "category": "shopping_net",
+      "amount": 844.8,
+      "country": "Collettsville, NC",
+      "isForeign": true,
+      "timeHour": 13,
+      "velocity": 4,
+      "locationMatch": false,
+      "riskScore": 92,
+      "status": "FLAGGED",
+      "reasons": [
+        "Kaggle Ground-Truth Fraud Flag (Category: shopping_net)",
+        "Abnormal transaction volume ($844.80)",
+        "Card-not-present merchant origin"
+      ]
+    },
+    {
+      "transactionId": "TXN-KAG-886f",
+      "sender": "Jason Murphy",
+      "merchant": "Ruecker Group",
+      "category": "misc_net",
+      "amount": 843.91,
+      "country": "Collettsville, NC",
+      "isForeign": true,
+      "timeHour": 23,
+      "velocity": 4,
+      "locationMatch": false,
+      "riskScore": 92,
+      "status": "FLAGGED",
+      "reasons": [
+        "Kaggle Ground-Truth Fraud Flag (Category: misc_net)",
+        "Abnormal transaction volume ($843.91)",
+        "Card-not-present merchant origin"
+      ]
+    },
+    {
+      "transactionId": "TXN-KAG-fed8",
+      "sender": "Misty Hart",
+      "merchant": "Conroy-Cruickshank",
+      "category": "gas_transport",
+      "amount": 10.76,
+      "country": "San Antonio, TX",
+      "isForeign": true,
+      "timeHour": 1,
+      "velocity": 4,
+      "locationMatch": false,
+      "riskScore": 76,
+      "status": "FLAGGED",
+      "reasons": [
+        "Kaggle Ground-Truth Fraud Flag (Category: gas_transport)",
+        "Off-peak execution hour (01:00 AM)",
+        "Terminal location anomaly"
+      ]
+    },
+    {
+      "transactionId": "TXN-KAG-a505",
+      "sender": "Misty Hart",
+      "merchant": "Koepp-Parker",
+      "category": "grocery_pos",
+      "amount": 332.35,
+      "country": "San Antonio, TX",
+      "isForeign": true,
+      "timeHour": 1,
+      "velocity": 4,
+      "locationMatch": false,
+      "riskScore": 84,
+      "status": "FLAGGED",
+      "reasons": [
+        "Kaggle Ground-Truth Fraud Flag (Category: grocery_pos)",
+        "Abnormal transaction volume ($332.35)",
+        "Off-peak execution hour (01:00 AM)",
+        "Terminal location anomaly"
+      ]
+    },
+    {
+      "transactionId": "TXN-KAG-4027",
+      "sender": "Misty Hart",
+      "merchant": "Strosin-Cruickshank",
+      "category": "grocery_pos",
+      "amount": 315.34,
+      "country": "San Antonio, TX",
+      "isForeign": true,
+      "timeHour": 3,
+      "velocity": 4,
+      "locationMatch": false,
+      "riskScore": 84,
+      "status": "FLAGGED",
+      "reasons": [
+        "Kaggle Ground-Truth Fraud Flag (Category: grocery_pos)",
+        "Abnormal transaction volume ($315.34)",
+        "Off-peak execution hour (03:00 AM)",
+        "Terminal location anomaly"
+      ]
+    },
+    {
+      "transactionId": "TXN-KAG-0b47",
+      "sender": "Heather Chase",
+      "merchant": "Rau and Sons",
+      "category": "grocery_pos",
+      "amount": 337.05,
+      "country": "Manor, PA",
+      "isForeign": true,
+      "timeHour": 16,
+      "velocity": 4,
+      "locationMatch": false,
+      "riskScore": 84,
+      "status": "FLAGGED",
+      "reasons": [
+        "Kaggle Ground-Truth Fraud Flag (Category: grocery_pos)",
+        "Abnormal transaction volume ($337.05)",
+        "Terminal location anomaly"
+      ]
+    },
+    {
+      "transactionId": "TXN-KAG-aca9",
+      "sender": "Heather Chase",
+      "merchant": "Pouros-Conroy",
+      "category": "shopping_pos",
+      "amount": 711.66,
+      "country": "Manor, PA",
+      "isForeign": true,
+      "timeHour": 18,
+      "velocity": 4,
+      "locationMatch": false,
+      "riskScore": 92,
+      "status": "FLAGGED",
+      "reasons": [
+        "Kaggle Ground-Truth Fraud Flag (Category: shopping_pos)",
+        "Abnormal transaction volume ($711.66)",
+        "Terminal location anomaly"
+      ]
+    },
+    {
+      "transactionId": "TXN-KAG-a9f4",
+      "sender": "Heather Chase",
+      "merchant": "Johnson, Runolfsdottir and Mayer",
+      "category": "misc_net",
+      "amount": 707.5,
+      "country": "Manor, PA",
+      "isForeign": true,
+      "timeHour": 22,
+      "velocity": 4,
+      "locationMatch": false,
+      "riskScore": 92,
+      "status": "FLAGGED",
+      "reasons": [
+        "Kaggle Ground-Truth Fraud Flag (Category: misc_net)",
+        "Abnormal transaction volume ($707.50)",
+        "Card-not-present merchant origin"
+      ]
+    },
+    {
+      "transactionId": "TXN-KAG-1774",
+      "sender": "Jason Murphy",
+      "merchant": "Fisher Inc",
+      "category": "shopping_net",
+      "amount": 942.62,
+      "country": "Collettsville, NC",
+      "isForeign": true,
+      "timeHour": 22,
+      "velocity": 4,
+      "locationMatch": false,
+      "riskScore": 92,
+      "status": "FLAGGED",
+      "reasons": [
+        "Kaggle Ground-Truth Fraud Flag (Category: shopping_net)",
+        "Abnormal transaction volume ($942.62)",
+        "Card-not-present merchant origin"
+      ]
+    },
+    {
+      "transactionId": "TXN-KAG-7022",
+      "sender": "Heather Chase",
+      "merchant": "Mosciski Group",
+      "category": "travel",
+      "amount": 4.5,
+      "country": "Manor, PA",
+      "isForeign": true,
+      "timeHour": 22,
+      "velocity": 4,
+      "locationMatch": false,
+      "riskScore": 76,
+      "status": "FLAGGED",
+      "reasons": [
+        "Kaggle Ground-Truth Fraud Flag (Category: travel)",
+        "Terminal location anomaly"
+      ]
+    },
+    {
+      "transactionId": "TXN-KAG-55b9",
+      "sender": "Jennifer Banks",
+      "merchant": "Rippin, Kub and Mann",
+      "category": "misc_net",
+      "amount": 4.97,
+      "country": "Moravian Falls, NC",
+      "isForeign": true,
+      "timeHour": 0,
+      "velocity": 1,
+      "locationMatch": true,
+      "riskScore": 8,
+      "status": "SAFE",
+      "reasons": [
+        "Normal consumer baseline (misc_net)"
+      ]
+    },
+    {
+      "transactionId": "TXN-KAG-4d99",
+      "sender": "Stephanie Gill",
+      "merchant": "Heller, Gutmann and Zieme",
+      "category": "grocery_pos",
+      "amount": 107.23,
+      "country": "Orient, WA",
+      "isForeign": false,
+      "timeHour": 0,
+      "velocity": 1,
+      "locationMatch": true,
+      "riskScore": 16,
+      "status": "SAFE",
+      "reasons": [
+        "Normal consumer baseline (grocery_pos)"
+      ]
+    },
+    {
+      "transactionId": "TXN-KAG-cf95",
+      "sender": "Edward Sanchez",
+      "merchant": "Lind-Buckridge",
+      "category": "entertainment",
+      "amount": 220.11,
+      "country": "Malad City, ID",
+      "isForeign": false,
+      "timeHour": 0,
+      "velocity": 1,
+      "locationMatch": true,
+      "riskScore": 24,
+      "status": "SAFE",
+      "reasons": [
+        "Normal consumer baseline (entertainment)"
+      ]
+    },
+    {
+      "transactionId": "TXN-KAG-9a81",
+      "sender": "Jeremy White",
+      "merchant": "Kutch, Hermiston and Farrell",
+      "category": "gas_transport",
+      "amount": 45.0,
+      "country": "Boulder, MT",
+      "isForeign": false,
+      "timeHour": 0,
+      "velocity": 1,
+      "locationMatch": true,
+      "riskScore": 8,
+      "status": "SAFE",
+      "reasons": [
+        "Normal consumer baseline (gas_transport)"
+      ]
+    },
+    {
+      "transactionId": "TXN-KAG-cb46",
+      "sender": "Tyler Garcia",
+      "merchant": "Keeling-Crist",
+      "category": "misc_pos",
+      "amount": 41.96,
+      "country": "Doe Hill, VA",
+      "isForeign": false,
+      "timeHour": 0,
+      "velocity": 1,
+      "locationMatch": true,
+      "riskScore": 8,
+      "status": "SAFE",
+      "reasons": [
+        "Normal consumer baseline (misc_pos)"
+      ]
+    },
+    {
+      "transactionId": "TXN-KAG-aab5",
+      "sender": "Jennifer Conner",
+      "merchant": "Stroman, Hudson and Erdman",
+      "category": "gas_transport",
+      "amount": 94.63,
+      "country": "Dublin, PA",
+      "isForeign": false,
+      "timeHour": 0,
+      "velocity": 1,
+      "locationMatch": true,
+      "riskScore": 16,
+      "status": "SAFE",
+      "reasons": [
+        "Normal consumer baseline (gas_transport)"
+      ]
+    },
+    {
+      "transactionId": "TXN-KAG-e720",
+      "sender": "Kelsey Richards",
+      "merchant": "Rowe-Vandervort",
+      "category": "grocery_net",
+      "amount": 44.54,
+      "country": "Holcomb, KS",
+      "isForeign": true,
+      "timeHour": 0,
+      "velocity": 1,
+      "locationMatch": true,
+      "riskScore": 8,
+      "status": "SAFE",
+      "reasons": [
+        "Normal consumer baseline (grocery_net)"
+      ]
+    },
+    {
+      "transactionId": "TXN-KAG-967c",
+      "sender": "Steven Williams",
+      "merchant": "Corwin-Collins",
+      "category": "gas_transport",
+      "amount": 71.65,
+      "country": "Edinburg, VA",
+      "isForeign": false,
+      "timeHour": 0,
+      "velocity": 1,
+      "locationMatch": true,
+      "riskScore": 16,
+      "status": "SAFE",
+      "reasons": [
+        "Normal consumer baseline (gas_transport)"
+      ]
+    },
+    {
+      "transactionId": "TXN-KAG-29f5",
+      "sender": "Heather Chase",
+      "merchant": "Herzog Ltd",
+      "category": "misc_pos",
+      "amount": 4.27,
+      "country": "Manor, PA",
+      "isForeign": false,
+      "timeHour": 0,
+      "velocity": 1,
+      "locationMatch": true,
+      "riskScore": 8,
+      "status": "SAFE",
+      "reasons": [
+        "Normal consumer baseline (misc_pos)"
+      ]
+    },
+    {
+      "transactionId": "TXN-KAG-b00e",
+      "sender": "Melissa Aguilar",
+      "merchant": "Schoen, Kuphal and Nitzsche",
+      "category": "grocery_pos",
+      "amount": 198.39,
+      "country": "Clarksville, TN",
+      "isForeign": false,
+      "timeHour": 0,
+      "velocity": 1,
+      "locationMatch": true,
+      "riskScore": 24,
+      "status": "SAFE",
+      "reasons": [
+        "Normal consumer baseline (grocery_pos)"
+      ]
+    },
+    {
+      "transactionId": "TXN-KAG-9c87",
+      "sender": "Eddie Mendez",
+      "merchant": "Rutherford-Mertz",
+      "category": "grocery_pos",
+      "amount": 24.74,
+      "country": "Clarinda, IA",
+      "isForeign": false,
+      "timeHour": 0,
+      "velocity": 1,
+      "locationMatch": true,
+      "riskScore": 8,
+      "status": "SAFE",
+      "reasons": [
+        "Normal consumer baseline (grocery_pos)"
+      ]
+    },
+    {
+      "transactionId": "TXN-KAG-4b1d",
+      "sender": "Theresa Blackwell",
+      "merchant": "Kerluke-Abshire",
+      "category": "shopping_net",
+      "amount": 7.77,
+      "country": "Shenandoah Junction, WV",
+      "isForeign": true,
+      "timeHour": 0,
+      "velocity": 1,
+      "locationMatch": true,
+      "riskScore": 8,
+      "status": "SAFE",
+      "reasons": [
+        "Normal consumer baseline (shopping_net)"
+      ]
+    },
+    {
+      "transactionId": "TXN-KAG-4abf",
+      "sender": "Charles Robles",
+      "merchant": "Lockman Ltd",
+      "category": "grocery_pos",
+      "amount": 71.22,
+      "country": "Saint Petersburg, FL",
+      "isForeign": false,
+      "timeHour": 0,
+      "velocity": 1,
+      "locationMatch": true,
+      "riskScore": 16,
+      "status": "SAFE",
+      "reasons": [
+        "Normal consumer baseline (grocery_pos)"
+      ]
+    },
+    {
+      "transactionId": "TXN-KAG-f231",
+      "sender": "Jack Hill",
+      "merchant": "Kiehn Inc",
+      "category": "grocery_pos",
+      "amount": 96.29,
+      "country": "Grenada, CA",
+      "isForeign": false,
+      "timeHour": 0,
+      "velocity": 1,
+      "locationMatch": true,
+      "riskScore": 16,
+      "status": "SAFE",
+      "reasons": [
+        "Normal consumer baseline (grocery_pos)"
+      ]
+    },
+    {
+      "transactionId": "TXN-KAG-5fea",
+      "sender": "Christopher Castaneda",
+      "merchant": "Beier-Hyatt",
+      "category": "shopping_pos",
+      "amount": 7.77,
+      "country": "High Rolls Mountain Park, NM",
+      "isForeign": false,
+      "timeHour": 0,
+      "velocity": 1,
+      "locationMatch": true,
+      "riskScore": 8,
+      "status": "SAFE",
+      "reasons": [
+        "Normal consumer baseline (shopping_pos)"
+      ]
     }
   ],
   "stream": [
     {
-      "sender": "Alex Morgan",
-      "merchant": "Online Electronics",
-      "type": "Shopping",
-      "amount": 6500,
-      "origin": "foreign_high_risk",
-      "timeHour": 2,
-      "velocity": 5,
-      "locationMatch": false
-    },
-    {
-      "sender": "Sarah Wilson",
-      "merchant": "Grocery Store",
-      "type": "Groceries",
-      "amount": 45.5,
-      "origin": "domestic",
-      "timeHour": 12,
-      "velocity": 1,
-      "locationMatch": true
-    },
-    {
-      "sender": "David Thomas",
-      "merchant": "Travel Services",
-      "type": "Travel",
-      "amount": 2800,
-      "origin": "foreign",
-      "timeHour": 3,
-      "velocity": 2,
-      "locationMatch": true
-    },
-    {
-      "sender": "Elena Rostova",
-      "merchant": "Crypto Exchange Hub",
-      "type": "Transfer",
-      "amount": 8900,
-      "origin": "foreign_high_risk",
-      "timeHour": 1,
+      "transactionId": "TXN-KAG-2b0a",
+      "sender": "Jason Murphy",
+      "merchant": "Morissette PLC",
+      "category": "shopping_pos",
+      "amount": 821.96,
+      "country": "Collettsville, NC",
+      "isForeign": true,
+      "timeHour": 23,
       "velocity": 4,
-      "locationMatch": false
+      "locationMatch": false,
+      "riskScore": 92,
+      "status": "FLAGGED",
+      "reasons": [
+        "Kaggle Ground-Truth Fraud Flag (Category: shopping_pos)",
+        "Abnormal transaction volume ($821.96)",
+        "Terminal location anomaly"
+      ]
     },
     {
-      "sender": "James O'Connor",
-      "merchant": "Coffee Roasters",
-      "type": "Dining",
-      "amount": 14.75,
-      "origin": "domestic",
-      "timeHour": 9,
+      "transactionId": "TXN-KAG-8348",
+      "sender": "Jason Murphy",
+      "merchant": "Lemke-Gutmann",
+      "category": "shopping_net",
+      "amount": 1092.68,
+      "country": "Collettsville, NC",
+      "isForeign": true,
+      "timeHour": 23,
+      "velocity": 4,
+      "locationMatch": false,
+      "riskScore": 92,
+      "status": "FLAGGED",
+      "reasons": [
+        "Kaggle Ground-Truth Fraud Flag (Category: shopping_net)",
+        "Abnormal transaction volume ($1092.68)",
+        "Card-not-present merchant origin"
+      ]
+    },
+    {
+      "transactionId": "TXN-KAG-7349",
+      "sender": "Jason Murphy",
+      "merchant": "Mohr-Bayer",
+      "category": "shopping_net",
+      "amount": 1254.27,
+      "country": "Collettsville, NC",
+      "isForeign": true,
+      "timeHour": 23,
+      "velocity": 4,
+      "locationMatch": false,
+      "riskScore": 92,
+      "status": "FLAGGED",
+      "reasons": [
+        "Kaggle Ground-Truth Fraud Flag (Category: shopping_net)",
+        "Abnormal transaction volume ($1254.27)",
+        "Card-not-present merchant origin"
+      ]
+    },
+    {
+      "transactionId": "TXN-KAG-dd4c",
+      "sender": "Misty Hart",
+      "merchant": "Moen, Reinger and Murphy",
+      "category": "grocery_pos",
+      "amount": 274.09,
+      "country": "San Antonio, TX",
+      "isForeign": true,
+      "timeHour": 23,
+      "velocity": 4,
+      "locationMatch": false,
+      "riskScore": 84,
+      "status": "FLAGGED",
+      "reasons": [
+        "Kaggle Ground-Truth Fraud Flag (Category: grocery_pos)",
+        "Abnormal transaction volume ($274.09)",
+        "Terminal location anomaly"
+      ]
+    },
+    {
+      "transactionId": "TXN-KAG-d3a1",
+      "sender": "Mark Brown",
+      "merchant": "Stokes, Christiansen and Sipes",
+      "category": "grocery_net",
+      "amount": 14.37,
+      "country": "Wales, AK",
+      "isForeign": true,
+      "timeHour": 0,
+      "velocity": 4,
+      "locationMatch": false,
+      "riskScore": 76,
+      "status": "FLAGGED",
+      "reasons": [
+        "Kaggle Ground-Truth Fraud Flag (Category: grocery_net)",
+        "Off-peak execution hour (00:00 AM)",
+        "Card-not-present merchant origin"
+      ]
+    },
+    {
+      "transactionId": "TXN-KAG-0516",
+      "sender": "Heather Chase",
+      "merchant": "Rau and Sons",
+      "category": "grocery_pos",
+      "amount": 316.93,
+      "country": "Manor, PA",
+      "isForeign": true,
+      "timeHour": 2,
+      "velocity": 4,
+      "locationMatch": false,
+      "riskScore": 84,
+      "status": "FLAGGED",
+      "reasons": [
+        "Kaggle Ground-Truth Fraud Flag (Category: grocery_pos)",
+        "Abnormal transaction volume ($316.93)",
+        "Off-peak execution hour (02:00 AM)",
+        "Terminal location anomaly"
+      ]
+    },
+    {
+      "transactionId": "TXN-KAG-a3e6",
+      "sender": "Heather Chase",
+      "merchant": "Padberg-Welch",
+      "category": "grocery_pos",
+      "amount": 327.68,
+      "country": "Manor, PA",
+      "isForeign": true,
+      "timeHour": 2,
+      "velocity": 4,
+      "locationMatch": false,
+      "riskScore": 84,
+      "status": "FLAGGED",
+      "reasons": [
+        "Kaggle Ground-Truth Fraud Flag (Category: grocery_pos)",
+        "Abnormal transaction volume ($327.68)",
+        "Off-peak execution hour (02:00 AM)",
+        "Terminal location anomaly"
+      ]
+    },
+    {
+      "transactionId": "TXN-KAG-573f",
+      "sender": "Mark Brown",
+      "merchant": "Predovic Inc",
+      "category": "shopping_net",
+      "amount": 966.11,
+      "country": "Wales, AK",
+      "isForeign": true,
+      "timeHour": 15,
+      "velocity": 4,
+      "locationMatch": false,
+      "riskScore": 92,
+      "status": "FLAGGED",
+      "reasons": [
+        "Kaggle Ground-Truth Fraud Flag (Category: shopping_net)",
+        "Abnormal transaction volume ($966.11)",
+        "Card-not-present merchant origin"
+      ]
+    },
+    {
+      "transactionId": "TXN-KAG-eec0",
+      "sender": "Heather Chase",
+      "merchant": "Corwin-Gorczany",
+      "category": "misc_net",
+      "amount": 795.22,
+      "country": "Manor, PA",
+      "isForeign": true,
+      "timeHour": 15,
+      "velocity": 4,
+      "locationMatch": false,
+      "riskScore": 92,
+      "status": "FLAGGED",
+      "reasons": [
+        "Kaggle Ground-Truth Fraud Flag (Category: misc_net)",
+        "Abnormal transaction volume ($795.22)",
+        "Card-not-present merchant origin"
+      ]
+    },
+    {
+      "transactionId": "TXN-KAG-1f89",
+      "sender": "Heather Chase",
+      "merchant": "Bins, Balistreri and Beatty",
+      "category": "shopping_pos",
+      "amount": 1015.8,
+      "country": "Manor, PA",
+      "isForeign": true,
+      "timeHour": 15,
+      "velocity": 4,
+      "locationMatch": false,
+      "riskScore": 92,
+      "status": "FLAGGED",
+      "reasons": [
+        "Kaggle Ground-Truth Fraud Flag (Category: shopping_pos)",
+        "Abnormal transaction volume ($1015.80)",
+        "Terminal location anomaly"
+      ]
+    },
+    {
+      "transactionId": "TXN-KAG-59d5",
+      "sender": "Heather Chase",
+      "merchant": "Block-Parisian",
+      "category": "misc_net",
+      "amount": 722.18,
+      "country": "Manor, PA",
+      "isForeign": true,
+      "timeHour": 22,
+      "velocity": 4,
+      "locationMatch": false,
+      "riskScore": 92,
+      "status": "FLAGGED",
+      "reasons": [
+        "Kaggle Ground-Truth Fraud Flag (Category: misc_net)",
+        "Abnormal transaction volume ($722.18)",
+        "Card-not-present merchant origin"
+      ]
+    },
+    {
+      "transactionId": "TXN-KAG-4501",
+      "sender": "Heather Chase",
+      "merchant": "Schmidt and Sons",
+      "category": "shopping_net",
+      "amount": 898.81,
+      "country": "Manor, PA",
+      "isForeign": true,
+      "timeHour": 22,
+      "velocity": 4,
+      "locationMatch": false,
+      "riskScore": 92,
+      "status": "FLAGGED",
+      "reasons": [
+        "Kaggle Ground-Truth Fraud Flag (Category: shopping_net)",
+        "Abnormal transaction volume ($898.81)",
+        "Card-not-present merchant origin"
+      ]
+    },
+    {
+      "transactionId": "TXN-KAG-de8c",
+      "sender": "Heather Chase",
+      "merchant": "Ankunding LLC",
+      "category": "shopping_net",
+      "amount": 1001.63,
+      "country": "Manor, PA",
+      "isForeign": true,
+      "timeHour": 22,
+      "velocity": 4,
+      "locationMatch": false,
+      "riskScore": 92,
+      "status": "FLAGGED",
+      "reasons": [
+        "Kaggle Ground-Truth Fraud Flag (Category: shopping_net)",
+        "Abnormal transaction volume ($1001.63)",
+        "Card-not-present merchant origin"
+      ]
+    },
+    {
+      "transactionId": "TXN-KAG-b4e0",
+      "sender": "Mark Brown",
+      "merchant": "Wisozk and Sons",
+      "category": "misc_pos",
+      "amount": 49.61,
+      "country": "Wales, AK",
+      "isForeign": true,
+      "timeHour": 22,
+      "velocity": 4,
+      "locationMatch": false,
+      "riskScore": 76,
+      "status": "FLAGGED",
+      "reasons": [
+        "Kaggle Ground-Truth Fraud Flag (Category: misc_pos)",
+        "Terminal location anomaly"
+      ]
+    },
+    {
+      "transactionId": "TXN-KAG-4496",
+      "sender": "Mark Brown",
+      "merchant": "Murray-Smitham",
+      "category": "grocery_pos",
+      "amount": 295.26,
+      "country": "Wales, AK",
+      "isForeign": true,
+      "timeHour": 23,
+      "velocity": 4,
+      "locationMatch": false,
+      "riskScore": 84,
+      "status": "FLAGGED",
+      "reasons": [
+        "Kaggle Ground-Truth Fraud Flag (Category: grocery_pos)",
+        "Abnormal transaction volume ($295.26)",
+        "Terminal location anomaly"
+      ]
+    },
+    {
+      "transactionId": "TXN-KAG-4680",
+      "sender": "Heather Chase",
+      "merchant": "Hills-Witting",
+      "category": "shopping_net",
+      "amount": 1099.99,
+      "country": "Manor, PA",
+      "isForeign": true,
+      "timeHour": 23,
+      "velocity": 4,
+      "locationMatch": false,
+      "riskScore": 92,
+      "status": "FLAGGED",
+      "reasons": [
+        "Kaggle Ground-Truth Fraud Flag (Category: shopping_net)",
+        "Abnormal transaction volume ($1099.99)",
+        "Card-not-present merchant origin"
+      ]
+    },
+    {
+      "transactionId": "TXN-KAG-a0ff",
+      "sender": "Mark Brown",
+      "merchant": "Friesen Ltd",
+      "category": "health_fitness",
+      "amount": 18.17,
+      "country": "Wales, AK",
+      "isForeign": true,
+      "timeHour": 23,
+      "velocity": 4,
+      "locationMatch": false,
+      "riskScore": 76,
+      "status": "FLAGGED",
+      "reasons": [
+        "Kaggle Ground-Truth Fraud Flag (Category: health_fitness)",
+        "Terminal location anomaly"
+      ]
+    },
+    {
+      "transactionId": "TXN-KAG-729d",
+      "sender": "Mark Brown",
+      "merchant": "Raynor, Reinger and Hagenes",
+      "category": "gas_transport",
+      "amount": 20.45,
+      "country": "Wales, AK",
+      "isForeign": true,
+      "timeHour": 3,
+      "velocity": 4,
+      "locationMatch": false,
+      "riskScore": 76,
+      "status": "FLAGGED",
+      "reasons": [
+        "Kaggle Ground-Truth Fraud Flag (Category: gas_transport)",
+        "Off-peak execution hour (03:00 AM)",
+        "Terminal location anomaly"
+      ]
+    },
+    {
+      "transactionId": "TXN-KAG-7ac4",
+      "sender": "Mark Brown",
+      "merchant": "Heller-Langosh",
+      "category": "gas_transport",
+      "amount": 18.19,
+      "country": "Wales, AK",
+      "isForeign": true,
+      "timeHour": 3,
+      "velocity": 4,
+      "locationMatch": false,
+      "riskScore": 76,
+      "status": "FLAGGED",
+      "reasons": [
+        "Kaggle Ground-Truth Fraud Flag (Category: gas_transport)",
+        "Off-peak execution hour (03:00 AM)",
+        "Terminal location anomaly"
+      ]
+    },
+    {
+      "transactionId": "TXN-KAG-0e51",
+      "sender": "Helen Campbell",
+      "merchant": "Padberg-Welch",
+      "category": "grocery_pos",
+      "amount": 367.29,
+      "country": "Browning, MO",
+      "isForeign": true,
+      "timeHour": 11,
+      "velocity": 4,
+      "locationMatch": false,
+      "riskScore": 84,
+      "status": "FLAGGED",
+      "reasons": [
+        "Kaggle Ground-Truth Fraud Flag (Category: grocery_pos)",
+        "Abnormal transaction volume ($367.29)",
+        "Terminal location anomaly"
+      ]
+    },
+    {
+      "transactionId": "TXN-KAG-e3dc",
+      "sender": "Ronald Carson",
+      "merchant": "Schmidt and Sons",
+      "category": "shopping_net",
+      "amount": 3.26,
+      "country": "Harrington Park, NJ",
+      "isForeign": true,
+      "timeHour": 0,
       "velocity": 1,
-      "locationMatch": true
+      "locationMatch": true,
+      "riskScore": 8,
+      "status": "SAFE",
+      "reasons": [
+        "Normal consumer baseline (shopping_net)"
+      ]
+    },
+    {
+      "transactionId": "TXN-KAG-e3d3",
+      "sender": "Lisa Mendez",
+      "merchant": "Lebsack and Sons",
+      "category": "misc_net",
+      "amount": 327.0,
+      "country": "Lahoma, OK",
+      "isForeign": true,
+      "timeHour": 0,
+      "velocity": 1,
+      "locationMatch": true,
+      "riskScore": 24,
+      "status": "SAFE",
+      "reasons": [
+        "Normal consumer baseline (misc_net)"
+      ]
+    },
+    {
+      "transactionId": "TXN-KAG-2f25",
+      "sender": "Nathan Thomas",
+      "merchant": "Mayert Group",
+      "category": "shopping_pos",
+      "amount": 341.67,
+      "country": "Carlisle, IN",
+      "isForeign": false,
+      "timeHour": 0,
+      "velocity": 1,
+      "locationMatch": true,
+      "riskScore": 24,
+      "status": "SAFE",
+      "reasons": [
+        "Normal consumer baseline (shopping_pos)"
+      ]
+    },
+    {
+      "transactionId": "TXN-KAG-96e5",
+      "sender": "Justin Gay",
+      "merchant": "Konopelski, Schneider and Hartmann",
+      "category": "food_dining",
+      "amount": 63.07,
+      "country": "Harborcreek, PA",
+      "isForeign": false,
+      "timeHour": 0,
+      "velocity": 1,
+      "locationMatch": true,
+      "riskScore": 16,
+      "status": "SAFE",
+      "reasons": [
+        "Normal consumer baseline (food_dining)"
+      ]
+    },
+    {
+      "transactionId": "TXN-KAG-d70e",
+      "sender": "Kenneth Robinson",
+      "merchant": "Schultz, Simonis and Little",
+      "category": "grocery_pos",
+      "amount": 44.71,
+      "country": "Elizabeth, NJ",
+      "isForeign": false,
+      "timeHour": 0,
+      "velocity": 1,
+      "locationMatch": true,
+      "riskScore": 8,
+      "status": "SAFE",
+      "reasons": [
+        "Normal consumer baseline (grocery_pos)"
+      ]
+    },
+    {
+      "transactionId": "TXN-KAG-502a",
+      "sender": "Gregory Graham",
+      "merchant": "Bauch-Raynor",
+      "category": "grocery_pos",
+      "amount": 57.34,
+      "country": "Methuen, MA",
+      "isForeign": false,
+      "timeHour": 0,
+      "velocity": 1,
+      "locationMatch": true,
+      "riskScore": 16,
+      "status": "SAFE",
+      "reasons": [
+        "Normal consumer baseline (grocery_pos)"
+      ]
+    },
+    {
+      "transactionId": "TXN-KAG-28e2",
+      "sender": "Jeffrey Rice",
+      "merchant": "Harris Inc",
+      "category": "gas_transport",
+      "amount": 50.79,
+      "country": "Moulton, IA",
+      "isForeign": false,
+      "timeHour": 0,
+      "velocity": 1,
+      "locationMatch": true,
+      "riskScore": 16,
+      "status": "SAFE",
+      "reasons": [
+        "Normal consumer baseline (gas_transport)"
+      ]
+    },
+    {
+      "transactionId": "TXN-KAG-1f8c",
+      "sender": "Mary Wall",
+      "merchant": "Kling-Grant",
+      "category": "grocery_net",
+      "amount": 46.28,
+      "country": "Plainfield, NJ",
+      "isForeign": true,
+      "timeHour": 0,
+      "velocity": 1,
+      "locationMatch": true,
+      "riskScore": 8,
+      "status": "SAFE",
+      "reasons": [
+        "Normal consumer baseline (grocery_net)"
+      ]
+    },
+    {
+      "transactionId": "TXN-KAG-ca53",
+      "sender": "Susan Washington",
+      "merchant": "Pacocha-Bauch",
+      "category": "shopping_pos",
+      "amount": 9.55,
+      "country": "May, TX",
+      "isForeign": false,
+      "timeHour": 0,
+      "velocity": 1,
+      "locationMatch": true,
+      "riskScore": 8,
+      "status": "SAFE",
+      "reasons": [
+        "Normal consumer baseline (shopping_pos)"
+      ]
+    },
+    {
+      "transactionId": "TXN-KAG-aecc",
+      "sender": "Richard Waters",
+      "merchant": "Lesch Ltd",
+      "category": "shopping_pos",
+      "amount": 22.95,
+      "country": "Waukesha, WI",
+      "isForeign": false,
+      "timeHour": 0,
+      "velocity": 1,
+      "locationMatch": true,
+      "riskScore": 8,
+      "status": "SAFE",
+      "reasons": [
+        "Normal consumer baseline (shopping_pos)"
+      ]
+    },
+    {
+      "transactionId": "TXN-KAG-29b5",
+      "sender": "Jodi Foster",
+      "merchant": "Kunde-Sanford",
+      "category": "misc_net",
+      "amount": 2.55,
+      "country": "Bailey, NC",
+      "isForeign": true,
+      "timeHour": 0,
+      "velocity": 1,
+      "locationMatch": true,
+      "riskScore": 8,
+      "status": "SAFE",
+      "reasons": [
+        "Normal consumer baseline (misc_net)"
+      ]
+    },
+    {
+      "transactionId": "TXN-KAG-a0af",
+      "sender": "Daniel Escobar",
+      "merchant": "Deckow-O'Conner",
+      "category": "grocery_pos",
+      "amount": 64.09,
+      "country": "Romulus, MI",
+      "isForeign": false,
+      "timeHour": 0,
+      "velocity": 1,
+      "locationMatch": true,
+      "riskScore": 16,
+      "status": "SAFE",
+      "reasons": [
+        "Normal consumer baseline (grocery_pos)"
+      ]
+    },
+    {
+      "transactionId": "TXN-KAG-49e3",
+      "sender": "Scott Martin",
+      "merchant": "Bruen-Yost",
+      "category": "misc_pos",
+      "amount": 6.85,
+      "country": "Freedom, WY",
+      "isForeign": false,
+      "timeHour": 0,
+      "velocity": 1,
+      "locationMatch": true,
+      "riskScore": 8,
+      "status": "SAFE",
+      "reasons": [
+        "Normal consumer baseline (misc_pos)"
+      ]
+    },
+    {
+      "transactionId": "TXN-KAG-aec1",
+      "sender": "Brian Simpson",
+      "merchant": "Kunze Inc",
+      "category": "grocery_pos",
+      "amount": 90.22,
+      "country": "Honokaa, HI",
+      "isForeign": false,
+      "timeHour": 0,
+      "velocity": 1,
+      "locationMatch": true,
+      "riskScore": 16,
+      "status": "SAFE",
+      "reasons": [
+        "Normal consumer baseline (grocery_pos)"
+      ]
+    },
+    {
+      "transactionId": "TXN-KAG-ed52",
+      "sender": "Aaron Rogers",
+      "merchant": "Nitzsche, Kessler and Wolff",
+      "category": "shopping_pos",
+      "amount": 4.02,
+      "country": "Valentine, NE",
+      "isForeign": false,
+      "timeHour": 0,
+      "velocity": 1,
+      "locationMatch": true,
+      "riskScore": 8,
+      "status": "SAFE",
+      "reasons": [
+        "Normal consumer baseline (shopping_pos)"
+      ]
+    },
+    {
+      "transactionId": "TXN-KAG-7e33",
+      "sender": "Tammie Harper",
+      "merchant": "Kihn, Abernathy and Douglas",
+      "category": "shopping_net",
+      "amount": 3.66,
+      "country": "Westfir, OR",
+      "isForeign": true,
+      "timeHour": 0,
+      "velocity": 1,
+      "locationMatch": true,
+      "riskScore": 8,
+      "status": "SAFE",
+      "reasons": [
+        "Normal consumer baseline (shopping_net)"
+      ]
+    },
+    {
+      "transactionId": "TXN-KAG-e800",
+      "sender": "Mary Myers",
+      "merchant": "Heller, Gutmann and Zieme",
+      "category": "grocery_pos",
+      "amount": 82.8,
+      "country": "Tiptonville, TN",
+      "isForeign": false,
+      "timeHour": 0,
+      "velocity": 1,
+      "locationMatch": true,
+      "riskScore": 16,
+      "status": "SAFE",
+      "reasons": [
+        "Normal consumer baseline (grocery_pos)"
+      ]
+    },
+    {
+      "transactionId": "TXN-KAG-78ce",
+      "sender": "Heather Stanton",
+      "merchant": "Torphy-Goyette",
+      "category": "shopping_pos",
+      "amount": 66.21,
+      "country": "Republic, MI",
+      "isForeign": false,
+      "timeHour": 0,
+      "velocity": 1,
+      "locationMatch": true,
+      "riskScore": 16,
+      "status": "SAFE",
+      "reasons": [
+        "Normal consumer baseline (shopping_pos)"
+      ]
+    },
+    {
+      "transactionId": "TXN-KAG-9558",
+      "sender": "Jenna Brooks",
+      "merchant": "Balistreri-Nader",
+      "category": "misc_pos",
+      "amount": 25.58,
+      "country": "Baton Rouge, LA",
+      "isForeign": false,
+      "timeHour": 0,
+      "velocity": 1,
+      "locationMatch": true,
+      "riskScore": 8,
+      "status": "SAFE",
+      "reasons": [
+        "Normal consumer baseline (misc_pos)"
+      ]
+    },
+    {
+      "transactionId": "TXN-KAG-0df0",
+      "sender": "Christopher Gilbert",
+      "merchant": "Bahringer, Schoen and Corkery",
+      "category": "shopping_pos",
+      "amount": 9.03,
+      "country": "Washington, DC",
+      "isForeign": false,
+      "timeHour": 0,
+      "velocity": 1,
+      "locationMatch": true,
+      "riskScore": 8,
+      "status": "SAFE",
+      "reasons": [
+        "Normal consumer baseline (shopping_pos)"
+      ]
     }
   ]
 }
-
