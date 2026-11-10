@@ -5,7 +5,8 @@ const cors = require('cors');
 const mongoose = require('mongoose');
 const { Server } = require('socket.io');
 const routes = require('./routes');
-const { STREAM_POOL } = require('./dataset');
+const { Transaction, User } = require('./models');
+const { SEED_TRANSACTIONS, STREAM_POOL } = require('./dataset');
 const { evaluateRisk } = require('./fraudEngine');
 
 const app = express();
@@ -78,9 +79,30 @@ io.on('connection', (socket) => {
   });
 });
 
-// MongoDB Connection
+// MongoDB Connection with Auto-Seeding
 mongoose.connect(MONGO_URI, { serverSelectionTimeoutMS: 4000 })
-  .then((conn) => console.log(`[MongoDB] Connected: ${conn.connection.host}`))
+  .then(async (conn) => {
+    console.log(`[MongoDB] Connected: ${conn.connection.host}`);
+    try {
+      const txCount = await Transaction.countDocuments();
+      if (txCount === 0 && SEED_TRANSACTIONS.length > 0) {
+        await Transaction.insertMany(SEED_TRANSACTIONS);
+        console.log(`[MongoDB] Auto-seeded ${SEED_TRANSACTIONS.length} Kaggle transactions into database.`);
+      }
+      const userExists = await User.findOne({ email: 'niteesh@sentinelpay.com' });
+      if (!userExists) {
+        await User.create({
+          name: 'Niteesh Balajee',
+          email: 'niteesh@sentinelpay.com',
+          password: 'admin123',
+          role: 'analyst',
+        });
+        console.log('[MongoDB] Auto-seeded default Analyst account (niteesh@sentinelpay.com)');
+      }
+    } catch (seedErr) {
+      console.warn(`[MongoDB] Auto-seed notice: ${seedErr.message}`);
+    }
+  })
   .catch((err) => console.warn(`[MongoDB] Running offline fallback (${err.message})`));
 
 // Middleware
