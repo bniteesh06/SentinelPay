@@ -1,82 +1,25 @@
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { Shield } from 'lucide-react';
 
-import {
-  ShieldCheck,
-  Code2,
-  BriefcaseBusiness,
-  ArrowUp,
-} from "lucide-react";
-
-function Footer() {
+export default function Footer() {
   return (
-    <footer className="footer" id="contact">
-      <div className="footer-main">
-        <div className="footer-brand">
-          <a href="#home" className="brand">
-            <span className="brand-icon">
-              <ShieldCheck size={23} />
-            </span>
-
-            <span>
-              Sentinel<span className="brand-highlight">Pay</span>
-            </span>
-          </a>
-
-          <p>
-            Smarter fraud detection.
-            Safer digital payments.
-            Greater confidence in every transaction.
-          </p>
-
-          <div className="footer-socials">
-            <a
-              href="https://github.com"
-              target="_blank"
-              rel="noreferrer"
-              aria-label="GitHub"
-            >
-              <Code2 size={19} />
-            </a>
-
-            <a
-              href="https://linkedin.com"
-              target="_blank"
-              rel="noreferrer"
-              aria-label="LinkedIn"
-            >
-              <BriefcaseBusiness size={19} />
-            </a>
-          </div>
+    <footer id="footer">
+      <div className="container footer__inner">
+        <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+          <Shield size={20} color="#C1401F" />
+          <span className="navbar__logo" style={{ color: '#fff' }}>SentinelPay</span>
         </div>
-
-        <div className="footer-links">
-          <h4>Quick Links</h4>
-          <a href="#home">Home</a>
-          <a href="#features">Features</a>
-          <a href="#about">About Us</a>
-          <a href="#contact">Contact</a>
-        </div>
-
-        <div className="footer-info">
-          <h4>Our Focus</h4>
-          <span>Fraud Detection</span>
-          <span>Transaction Monitoring</span>
-          <span>Payment Security</span>
-          <span>Risk Assessment</span>
-        </div>
-      </div>
-
-      <div className="footer-bottom">
-        <p>
-          © {new Date().getFullYear()} SentinelPay.
-          All rights reserved.
+        <p className="footer__meta">
+          Full Stack Development (CS3301) • Semester 5 • College Project
         </p>
-
-        <a href="#home" className="back-to-top">
-          Back to top <ArrowUp size={16} />
-        </a>
+        <div className="footer__links">
+          <Link to="/">Home</Link>
+          <Link to="/evaluator">Test Engine</Link>
+          <Link to="/dashboard">Alert Queue</Link>
+          <a href="#navbar">Back to top</a>
+        </div>
       </div>
     </footer>
   );
 }
-
-export default Footer;

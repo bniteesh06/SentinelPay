@@ -1,62 +1,56 @@
+import React from 'react';
+import FeatureCard from './FeatureCard';
+import { ShieldCheck, Cpu, LayoutList, History } from 'lucide-react';
 
-import {
-  ShieldCheck,
-  BrainCircuit,
-  Activity,
-  BellRing,
-} from "lucide-react";
-
-import FeatureCard from "./FeatureCard";
-
-function Features() {
-  const features = [
+export default function Features() {
+  const featureList = [
     {
-      icon: <BrainCircuit size={26} />,
-      title: "AI-Powered Fraud Detection",
-      description:
-        "Analyzes transaction patterns and identifies suspicious activities using intelligent fraud scoring.",
+      icon: ShieldCheck,
+      letter: 'R',
+      title: 'Rule-based checks',
+      description: 'Foreign transactions, location mismatches, unusual hours, and velocity spikes are caught instantly using clear, explainable rules.',
+      badge: 'Layer 1: Deterministic',
     },
     {
-      icon: <Activity size={26} />,
-      title: "Real-Time Monitoring",
-      description:
-        "Monitors transactions continuously and provides instant updates through real-time streaming.",
+      icon: Cpu,
+      letter: 'M',
+      title: 'ML risk scoring',
+      description: 'A trained statistical model scores anomalies rules alone would miss, learning from thousands of historical transaction patterns.',
+      badge: 'Layer 2: Statistical',
     },
     {
-      icon: <ShieldCheck size={26} />,
-      title: "Smart Risk Assessment",
-      description:
-        "Evaluates transaction risk levels to identify potentially fraudulent payments.",
+      icon: LayoutList,
+      letter: 'A',
+      title: 'Alert dashboard',
+      description: 'Flagged transactions land in one unified queue, sorted by risk, highlighting the exact criteria that triggered the alert.',
+      badge: 'Human-in-the-Loop',
     },
     {
-      icon: <BellRing size={26} />,
-      title: "Instant Alerts",
-      description:
-        "Highlights suspicious transactions and helps administrators respond quickly.",
+      icon: History,
+      letter: 'L',
+      title: 'Audit history',
+      description: 'Every decision—fraud or legitimate—is logged with reviewer identity, timestamp, and reasoning for institutional accountability.',
+      badge: 'Compliance & Audit',
     },
   ];
 
   return (
-    <section className="features-section" id="features">
+    <section id="features">
       <div className="container">
-        <div className="features-header">
-          <h2 className="section-heading">
-            Security That Works Behind Every Payment
-          </h2>
+        <h2 className="section-heading">How SentinelPay decides what to flag</h2>
+        <p className="section-subheading">
+          Two layers of detection working together, not one black box.
+        </p>
 
-          <p className="section-subheading">
-            Powerful features designed to make digital payments
-            safer, smarter and more reliable.
-          </p>
-        </div>
-
-        <div className="features-grid">
-          {features.map((feature) => (
+        <div className="feature-grid">
+          {featureList.map((f, idx) => (
             <FeatureCard
-              key={feature.title}
-              icon={feature.icon}
-              title={feature.title}
-              description={feature.description}
+              key={idx}
+              icon={f.icon}
+              letter={f.letter}
+              title={f.title}
+              description={f.description}
+              badge={f.badge}
             />
           ))}
         </div>
@@ -64,5 +58,3 @@ function Features() {
     </section>
   );
 }
-
-export default Features;

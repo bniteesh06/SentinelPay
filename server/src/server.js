@@ -1,29 +1,19 @@
-
 require('dotenv').config();
-
 const http = require('http');
 const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
 const { Server } = require('socket.io');
-
 const routes = require('./routes');
 const { STREAM_POOL } = require('./dataset');
 const { evaluateRisk } = require('./fraudEngine');
 
 const app = express();
 const server = http.createServer(app);
-
 const PORT = process.env.PORT || 5000;
-const MONGO_URI =
-  process.env.MONGO_URI ||
-  'mongodb://127.0.0.1:27017/sentinelpay';
+const MONGO_URI = process.env.MONGO_URI || 'mongodb://127.0.0.1:27017/sentinelpay';
 
-// Middleware
-app.use(cors({ origin: '*' }));
-app.use(express.json());
-
-// Socket.IO configuration
+// Socket.io Setup
 const io = new Server(server, {
   cors: {
     origin: '*',
@@ -31,80 +21,32 @@ const io = new Server(server, {
   },
 });
 
-// Temporary simulated transactions.
-// Used only when dataset.json is unavailable.
-const DEMO_STREAM_POOL = [
-  {
-    sender: 'Alex Morgan',
-    merchant: 'Online Electronics',
-    type: 'Shopping',
-    amount: 6500,
-    origin: 'foreign_high_risk',
-    timeHour: 2,
-    velocity: 5,
-    locationMatch: false,
-  },
-  {
-    sender: 'Sarah Wilson',
-    merchant: 'Grocery Store',
-    type: 'Groceries',
-    amount: 450,
-    origin: 'domestic',
-    timeHour: 12,
-    velocity: 1,
-    locationMatch: true,
-  },
-  {
-    sender: 'David Thomas',
-    merchant: 'Travel Services',
-    type: 'Travel',
-    amount: 2800,
-    origin: 'foreign',
-    timeHour: 3,
-    velocity: 2,
-    locationMatch: true,
-  },
-];
-
-const activeStreamPool =
-  STREAM_POOL.length > 0 ? STREAM_POOL : DEMO_STREAM_POOL;
-
 let streamInterval = null;
 let streamIndex = 0;
 
-// Handle WebSocket connections
 io.on('connection', (socket) => {
   console.log(`[Socket] Analyst connected: ${socket.id}`);
 
   socket.on('start-stream', () => {
-    if (streamInterval) {
-      clearInterval(streamInterval);
-    }
-
-    console.log('[Socket] Live stream: ACTIVE');
-    io.emit('stream-status', { active: true });
+    if (streamInterval) clearInterval(streamInterval);
+    console.log('[Socket] Live Kaggle-benchmark stream simulation: ACTIVE');
 
     streamInterval = setInterval(() => {
-      const template =
-        activeStreamPool[streamIndex % activeStreamPool.length];
-
+      const template = STREAM_POOL[streamIndex % STREAM_POOL.length];
       streamIndex++;
 
-      const { riskScore, status, reasons } =
-        evaluateRisk(template);
-
-      const isForeign =
-        (template.origin || 'domestic').startsWith('foreign');
+      const { riskScore, status, reasons } = evaluateRisk(template);
+      const isForeign = template.origin.startsWith('foreign');
 
       const liveTx = {
         _id: `live-${Date.now()}`,
-        transactionId: `TXN-LIVE-${Date.now()}`,
+        transactionId: `TXN-LIVE-${Math.floor(1000 + Math.random() * 9000)}`,
         sender: template.sender,
         merchant: template.merchant,
         type: template.type,
         amount: template.amount,
         origin: template.origin,
-        country: isForeign ? 'International' : 'Domestic',
+        country: isForeign ? 'International' : 'Domestic (US)',
         isForeign,
         timeHour: template.timeHour,
         velocity: template.velocity,
@@ -117,13 +59,9 @@ io.on('connection', (socket) => {
         createdAt: new Date(),
       };
 
-      // Send transaction to all connected dashboards
+      // Broadcast new transaction to all active dashboards
       io.emit('new-transaction', liveTx);
-
-      console.log(
-        `[Stream] ${liveTx.transactionId} | ${status} | Risk: ${riskScore}`
-      );
-    }, 3200);
+    }, 3200); // Emits every 3.2 seconds
   });
 
   socket.on('stop-stream', () => {
@@ -131,8 +69,7 @@ io.on('connection', (socket) => {
       clearInterval(streamInterval);
       streamInterval = null;
     }
-
-    console.log('[Socket] Live stream: PAUSED');
+    console.log('[Socket] Live stream simulation: PAUSED');
     io.emit('stream-status', { active: false });
   });
 
@@ -141,53 +78,31 @@ io.on('connection', (socket) => {
   });
 });
 
-// Connect MongoDB
-mongoose
-  .connect(MONGO_URI, { serverSelectionTimeoutMS: 4000 })
-  .then(() => {
-    console.log('[MongoDB] Connected successfully');
-  })
-  .catch((err) => {
-    console.warn(`[MongoDB] Offline fallback: ${err.message}`);
-  });
+// MongoDB Connection
+mongoose.connect(MONGO_URI, { serverSelectionTimeoutMS: 4000 })
+  .then((conn) => console.log(`[MongoDB] Connected: ${conn.connection.host}`))
+  .catch((err) => console.warn(`[MongoDB] Running offline fallback (${err.message})`));
 
-// Health check endpoint
-app.get('/api/health', (req, res) => {
-  res.json({
-    status: 'online',
-    database:
-      mongoose.connection.readyState === 1
-        ? 'connected'
-        : 'offline-fallback',
-    socketClients: io.engine.clientsCount,
-  });
-});
+// Middleware
+app.use(cors({ origin: '*' }));
+app.use(express.json());
 
-// Mount REST API routes
+// Health Check
+app.get('/api/health', (req, res) => res.json({
+  status: 'online',
+  database: mongoose.connection.readyState === 1 ? 'connected' : 'offline-fallback',
+  socketClients: io.engine.clientsCount,
+}));
+
+// API Routes
 app.use('/api', routes);
 
-// Handle unknown routes
-app.use((req, res) => {
-  res.status(404).json({
-    success: false,
-    message: 'Endpoint not found',
-  });
-});
+// Centralized Error Handlers
+app.use((req, res) => res.status(404).json({ success: false, message: 'Endpoint not found' }));
+app.use((err, req, res, next) => res.status(500).json({ success: false, message: err.message }));
 
-// Handle server errors
-app.use((err, req, res, next) => {
-  console.error(err);
-  res.status(500).json({
-    success: false,
-    message: err.message,
-  });
-});
-
-// Start server
 server.listen(PORT, () => {
-  console.log(
-    `SentinelPay API & WebSockets running at http://localhost:${PORT}`
-  );
+  console.log(`🚀 SentinelPay API & WebSockets running at http://localhost:${PORT}`);
 });
 
 module.exports = server;

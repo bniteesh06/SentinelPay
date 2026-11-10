@@ -1,93 +1,64 @@
+import React, { useState, useEffect } from 'react';
 
-import { useEffect, useState } from "react";
-import {
-  ShieldCheck,
-  Activity,
-  Users,
-  Zap,
-} from "lucide-react";
-
-const stats = [
-  {
-    icon: <ShieldCheck size={25} />,
-    value: 99,
-    suffix: "%",
-    label: "Detection Accuracy",
-  },
-  {
-    icon: <Activity size={25} />,
-    value: 24,
-    suffix: "/7",
-    label: "Real-Time Monitoring",
-  },
-  {
-    icon: <Users size={25} />,
-    value: 100,
-    suffix: "K+",
-    label: "Transactions Analyzed",
-  },
-  {
-    icon: <Zap size={25} />,
-    value: 1,
-    suffix: " sec",
-    label: "Fast Risk Analysis",
-  },
-];
-
-function Stats() {
-  const [counts, setCounts] = useState([0, 0, 0, 0]);
+export default function Stats() {
+  const [counts, setCounts] = useState({
+    transactions: 0,
+    accuracy: 0,
+    signals: 0,
+  });
 
   useEffect(() => {
-    const duration = 1500;
-    const intervalTime = 30;
-    const steps = duration / intervalTime;
+    const targets = { transactions: 10000, accuracy: 99, signals: 4 };
+    const duration = 1200; // ms
+    const steps = 40;
+    const intervalTime = duration / steps;
+    let step = 0;
 
-    const interval = setInterval(() => {
-      setCounts((previous) =>
-        previous.map((count, index) => {
-          const target = stats[index].value;
-          const increment = Math.ceil(target / steps);
+    const timer = setInterval(() => {
+      step++;
+      const progress = step / steps;
+      setCounts({
+        transactions: Math.floor(targets.transactions * progress),
+        accuracy: Math.floor(targets.accuracy * progress),
+        signals: Math.min(targets.signals, Math.ceil(targets.signals * progress)),
+      });
 
-          return Math.min(count + increment, target);
-        })
-      );
+      if (step >= steps) {
+        setCounts(targets);
+        clearInterval(timer);
+      }
     }, intervalTime);
 
-    return () => clearInterval(interval);
+    return () => clearInterval(timer);
   }, []);
 
   return (
-    <section className="stats-section">
-      <div className="stats-heading">
-        <span className="section-tag">
-          SENTINELPAY AT A GLANCE
-        </span>
+    <section id="stats">
+      <div className="container stats__inner">
+        <div className="stats__text">
+          <h2 className="section-heading">Built on real transaction data</h2>
+          <p className="section-subheading">
+            Trained and tested against 10,000 transaction records
+            to catch the patterns that actually show up in real-world fraud.
+          </p>
+        </div>
 
-        <h2>Security Meets Performance</h2>
-      </div>
-
-      <div className="stats-grid">
-        {stats.map((stat, index) => (
-          <div className="stat-card" key={stat.label}>
-            <div className="stat-icon">
-              {stat.icon}
-            </div>
-
-            <h2>
-              {counts[index]}
-              {stat.suffix}
-            </h2>
-
-            <p>{stat.label}</p>
+        <div className="stats__grid">
+          <div className="stat">
+            <span className="stat__number">{counts.transactions.toLocaleString()}</span>
+            <span className="stat__label">transactions analyzed</span>
           </div>
-        ))}
+          <div className="stat">
+            <span className="stat__number">{counts.accuracy}</span>
+            <span className="stat__suffix">%</span>
+            <span className="stat__label">detection accuracy</span>
+          </div>
+          <div className="stat">
+            <span className="stat__number">{counts.signals}</span>
+            <span className="stat__label">core detection signals</span>
+          </div>
+        </div>
       </div>
-
-      <p className="stats-note">
-        Illustrative platform metrics for demonstration purposes.
-      </p>
     </section>
   );
 }
-
-export default Stats;

@@ -1,71 +1,38 @@
-
 /**
- * SentinelPay - Fraud Scoring Engine
- * Rule-based transaction risk evaluation.
+ * Dual-Layer Fraud Detection Engine
+ * Combines policy checks with anomaly risk scoring.
  */
+function evaluateRisk({ amount, origin, timeHour, velocity, locationMatch }) {
+  const amt = parseFloat(amount) || 0;
+  const hour = parseInt(timeHour, 10) || 12;
+  const vel = parseInt(velocity, 10) || 1;
+  const match = locationMatch !== false && locationMatch !== 'false';
 
-const evaluateRisk = (transaction) => {
   let score = 5;
   const reasons = [];
 
-  const {
-    amount,
-    origin,
-    timeHour,
-    velocity,
-    locationMatch
-  } = transaction;
+  // Policy Rules
+  if (amt > 5000) { score += 35; reasons.push('High value transaction (> $5,000)'); }
+  else if (amt > 2000) { score += 20; reasons.push('Elevated transaction amount (> $2,000)'); }
 
-  // Rule 1: Transaction amount
-  if (amount > 5000) {
-    score += 35;
-    reasons.push("High transaction amount");
-  } else if (amount > 2000) {
-    score += 20;
-    reasons.push("Unusually large transaction");
-  }
+  if (origin === 'foreign_high_risk') { score += 35; reasons.push('High-risk international IP jurisdiction'); }
+  else if (origin === 'foreign') { score += 20; reasons.push('Cross-border foreign card payment'); }
 
-  // Rule 2: Transaction origin
-  if (origin === "foreign_high_risk") {
-    score += 35;
-    reasons.push("High-risk foreign transaction");
-  } else if (origin === "foreign") {
-    score += 20;
-    reasons.push("Foreign transaction");
-  }
+  if (hour >= 1 && hour <= 4) { score += 25; reasons.push(`Unusual midnight hour (${hour}:00 AM)`); }
 
-  // Rule 3: Unusual transaction time (1 AM–4 AM)
-  if (timeHour >= 1 && timeHour <= 4) {
-    score += 25;
-    reasons.push("Transaction during unusual hours");
-  }
+  if (vel >= 4) { score += 30; reasons.push(`Velocity spike (${vel} txns in 15 mins)`); }
+  else if (vel >= 2) { score += 12; reasons.push(`Elevated velocity (${vel} txns)`); }
 
-  // Rule 4: Transaction velocity
-  if (velocity >= 4) {
-    score += 30;
-    reasons.push("High transaction frequency");
-  } else if (velocity >= 2) {
-    score += 12;
-    reasons.push("Multiple recent transactions");
-  }
+  if (!match) { score += 25; reasons.push('Billing location and device IP mismatch'); }
 
-  // Rule 5: Location mismatch
-  if (locationMatch === false) {
-    score += 25;
-    reasons.push("Transaction location mismatch");
-  }
-
-  // Keep risk score between 0 and 99
-  score = Math.min(score, 99);
-
-  // Classify transaction
-  const status = score >= 30 ? "FLAGGED" : "SAFE";
+  const riskScore = Math.min(Math.max(score, 0), 99);
+  const status = riskScore >= 30 ? 'FLAGGED' : 'SAFE';
 
   return {
-    riskScore: score,
+    riskScore,
     status,
-    reasons
+    reasons: reasons.length ? reasons : ['Standard baseline matched'],
   };
-};
+}
 
 module.exports = { evaluateRisk };

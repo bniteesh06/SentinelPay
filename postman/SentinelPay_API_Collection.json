@@ -1,319 +1,268 @@
 {
-	"info": {
-		"_postman_id": "7a1e7918-889b-4938-a1c0-b8146f4d855b",
-		"name": "SentinelPay REST API Collection",
-		"description": "Tests SentinelPay health, fraud scoring, transaction review, analytics, and analyst authentication.",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "48999354",
-		"_collection_link": "https://rvdeekshithabsc24-8970917.postman.co/workspace/RV-DEEKSHITHA's-Workspace~e85e9f35-e981-4754-8a37-0bf6fba7abf3/collection/48999354-7a1e7918-889b-4938-a1c0-b8146f4d855b?action=share&source=collection_link&creator=48999354"
-	},
-	"item": [
-		{
-			"name": "System Health",
-			"item": [
-				{
-					"name": "Check API Health",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{baseUrl}}/api/health",
-							"host": [
-								"{{baseUrl}}"
-							],
-							"path": [
-								"api",
-								"health"
-							]
-						},
-						"description": "Checks Express server and database status."
-					},
-					"response": []
-				}
-			]
-		},
-		{
-			"name": "Transactions",
-			"item": [
-				{
-					"name": "1. Evaluate & Ingest Transaction (High Risk)",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n  \"sender\": \"Robert King\",\n  \"amount\": 6500.0,\n  \"origin\": \"foreign_high_risk\",\n  \"timeHour\": 2,\n  \"velocity\": 5,\n  \"locationMatch\": false\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{baseUrl}}/api/transactions",
-							"host": [
-								"{{baseUrl}}"
-							],
-							"path": [
-								"api",
-								"transactions"
-							]
-						},
-						"description": "High-risk example expected to be FLAGGED."
-					},
-					"response": []
-				},
-				{
-					"name": "2. Evaluate & Ingest Transaction (Safe)",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n  \"sender\": \"Emily Watson\",\n  \"amount\": 45.0,\n  \"origin\": \"domestic\",\n  \"timeHour\": 14,\n  \"velocity\": 1,\n  \"locationMatch\": true\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{baseUrl}}/api/transactions",
-							"host": [
-								"{{baseUrl}}"
-							],
-							"path": [
-								"api",
-								"transactions"
-							]
-						},
-						"description": "Safe example expected to be SAFE."
-					},
-					"response": []
-				},
-				{
-					"name": "3. Get All Transactions",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{baseUrl}}/api/transactions",
-							"host": [
-								"{{baseUrl}}"
-							],
-							"path": [
-								"api",
-								"transactions"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "4. Get Flagged Review Queue Only",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{baseUrl}}/api/transactions?status=FLAGGED",
-							"host": [
-								"{{baseUrl}}"
-							],
-							"path": [
-								"api",
-								"transactions"
-							],
-							"query": [
-								{
-									"key": "status",
-									"value": "FLAGGED"
-								}
-							]
-						},
-						"description": "Filters transactions by FLAGGED status."
-					},
-					"response": []
-				},
-				{
-					"name": "5. Analyst Triage: Confirm Fraud (Block)",
-					"request": {
-						"method": "PATCH",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n  \"status\": \"BLOCKED\",\n  \"notes\": \"Confirmed spoofed location and velocity burst\",\n  \"reviewerName\": \"SentinelPay Analyst\"\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{baseUrl}}/api/transactions/TXN-9042/review",
-							"host": [
-								"{{baseUrl}}"
-							],
-							"path": [
-								"api",
-								"transactions",
-								"TXN-9042",
-								"review"
-							]
-						},
-						"description": "Replace TXN-9042 with an existing transaction ID before sending."
-					},
-					"response": []
-				},
-				{
-					"name": "6. Analyst Triage: Clear as Legitimate (Safe)",
-					"request": {
-						"method": "PATCH",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n  \"status\": \"SAFE\",\n  \"notes\": \"Verified as a legitimate transaction\",\n  \"reviewerName\": \"SentinelPay Analyst\"\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{baseUrl}}/api/transactions/TXN-6521/review",
-							"host": [
-								"{{baseUrl}}"
-							],
-							"path": [
-								"api",
-								"transactions",
-								"TXN-6521",
-								"review"
-							]
-						},
-						"description": "Replace TXN-6521 with an existing transaction ID before sending."
-					},
-					"response": []
-				},
-				{
-					"name": "7. Analytics Summary",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{baseUrl}}/api/transactions/stats/summary",
-							"host": [
-								"{{baseUrl}}"
-							],
-							"path": [
-								"api",
-								"transactions",
-								"stats",
-								"summary"
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		},
-		{
-			"name": "Authentication",
-			"item": [
-				{
-					"name": "1. Login Analyst (Get JWT Token)",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n  \"email\": \"niteesh@sentinelpay.com\",\n  \"password\": \"admin123\"\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{baseUrl}}/api/auth/login",
-							"host": [
-								"{{baseUrl}}"
-							],
-							"path": [
-								"api",
-								"auth",
-								"login"
-							]
-						},
-						"description": "Example codebook credentials; account must exist in the database."
-					},
-					"response": []
-				},
-				{
-					"name": "2. Register New Analyst",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n  \"name\": \"Sarah Jenkins\",\n  \"email\": \"sarah@sentinelpay.com\",\n  \"password\": \"pass1234\",\n  \"role\": \"analyst\"\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{baseUrl}}/api/auth/register",
-							"host": [
-								"{{baseUrl}}"
-							],
-							"path": [
-								"api",
-								"auth",
-								"register"
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		}
-	],
-	"variable": [
-		{
-			"key": "baseUrl",
-			"value": "http://localhost:5000",
-			"type": "string"
-		}
-	]
+  "info": {
+    "_postman_id": "sentinelpay-fsd-2026",
+    "name": "SentinelPay REST API Collection",
+    "description": "Comprehensive Postman collection for testing SentinelPay Fraud Detection Engine & Review System (Module 5 FSD).",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "System Health",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/health",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "health"
+          ]
+        },
+        "description": "Check if Express server and MongoDB are online."
+      }
+    },
+    {
+      "name": "Transactions",
+      "item": [
+        {
+          "name": "1. Evaluate & Ingest Transaction (High Risk)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"sender\": \"Robert King\",\n  \"amount\": 6500.00,\n  \"origin\": \"foreign_high_risk\",\n  \"timeHour\": 2,\n  \"velocity\": 5,\n  \"locationMatch\": false\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/transactions",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "transactions"
+              ]
+            },
+            "description": "Submit a transaction for dual-layer fraud scoring. Should trigger multiple rules and FLAGGED status."
+          }
+        },
+        {
+          "name": "2. Evaluate & Ingest Transaction (Safe)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"sender\": \"Emily Watson\",\n  \"amount\": 45.00,\n  \"origin\": \"domestic\",\n  \"timeHour\": 14,\n  \"velocity\": 1,\n  \"locationMatch\": true\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/transactions",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "transactions"
+              ]
+            },
+            "description": "Submit a standard transaction. Should result in SAFE status (<30 risk)."
+          }
+        },
+        {
+          "name": "3. Get All Transactions",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/transactions",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "transactions"
+              ]
+            }
+          }
+        },
+        {
+          "name": "4. Get Flagged Review Queue Only",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/transactions?status=FLAGGED",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "transactions"
+              ],
+              "query": [
+                {
+                  "key": "status",
+                  "value": "FLAGGED"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "5. Analyst Triage: Confirm Fraud (Block)",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"status\": \"BLOCKED\",\n  \"notes\": \"Confirmed spoofed location and velocity burst\",\n  \"reviewerName\": \"Niteesh Balajee\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/transactions/TXN-9042/review",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "transactions",
+                "TXN-9042",
+                "review"
+              ]
+            }
+          }
+        },
+        {
+          "name": "6. Analyst Triage: Clear as Legitimate (Safe)",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"status\": \"SAFE\",\n  \"notes\": \"Verified via phone confirmation with cardholder\",\n  \"reviewerName\": \"Niteesh Balajee\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/transactions/TXN-6521/review",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "transactions",
+                "TXN-6521",
+                "review"
+              ]
+            }
+          }
+        },
+        {
+          "name": "7. Analytics Summary",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/transactions/stats/summary",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "transactions",
+                "stats",
+                "summary"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Authentication",
+      "item": [
+        {
+          "name": "1. Login Analyst (Get JWT Token)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"niteesh@sentinelpay.com\",\n  \"password\": \"admin123\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/auth/login",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "auth",
+                "login"
+              ]
+            }
+          }
+        },
+        {
+          "name": "2. Register New Analyst",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Sarah Jenkins\",\n  \"email\": \"sarah@sentinelpay.com\",\n  \"password\": \"pass1234\",\n  \"role\": \"analyst\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/auth/register",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "auth",
+                "register"
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:5000",
+      "type": "string"
+    }
+  ]
 }

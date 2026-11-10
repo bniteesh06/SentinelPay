@@ -1,128 +1,73 @@
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { ArrowRight, ShieldAlert, Cpu, Activity } from 'lucide-react';
 
-import {
-  ArrowRight,
-  ShieldCheck,
-  Activity,
-  LockKeyhole,
-  Zap,
-} from "lucide-react";
+export default function Hero() {
+  const nodes = [
+    { id: '#901', status: 'safe' },
+    { id: '#902', status: 'safe' },
+    { id: '#903', status: 'flag' },
+    { id: '#904', status: 'safe' },
+    { id: '#905', status: 'safe' },
+    { id: '#906', status: 'safe' },
+    { id: '#907', status: 'flag' },
+    { id: '#908', status: 'safe' },
+    { id: '#909', status: 'safe' },
+    { id: '#910', status: 'safe' },
+    { id: '#911', status: 'safe' },
+    { id: '#912', status: 'flag' },
+  ];
 
-function Hero() {
   return (
-    <section className="hero" id="home">
-      <div className="hero-content">
+    <section id="hero">
+      <div className="container hero__inner">
+        <div className="hero__content">
+          <h1 className="hero__headline">
+            Every transaction tells a story.<br />
+            Some of them are lying.
+          </h1>
+          <p className="hero__subtext">
+            SentinelPay scores every transaction the moment it happens,
+            combining rule-based checks with machine learning to flag
+            what looks wrong, so your team only reviews what matters.
+          </p>
 
-        <div className="hero-tag">
-          <span className="status-dot"></span>
-          AI-POWERED PAYMENT SECURITY
-        </div>
-
-        <h1>
-          Secure Every
-          <br />
-          <span>Transaction.</span>
-          <br />
-          Trust Every Payment.
-        </h1>
-
-        <p className="hero-description">
-          SentinelPay uses intelligent fraud detection and
-          real-time monitoring to protect digital payments
-          and keep every transaction secure.
-        </p>
-
-        <div className="hero-actions">
-          <a href="#features" className="primary-btn">
-            Explore Features <ArrowRight size={18} />
-          </a>
-
-          <a href="#about" className="secondary-btn">
-            Discover SentinelPay
-          </a>
-        </div>
-
-        <div className="hero-trust">
-          <div>
-            <ShieldCheck size={19} />
-            <span>Smart Protection</span>
-          </div>
-
-          <div>
-            <Activity size={19} />
-            <span>Real-Time Monitoring</span>
-          </div>
-
-          <div>
-            <LockKeyhole size={19} />
-            <span>Secure Payments</span>
+          <div className="hero__actions">
+            <Link to="/evaluator" className="btn btn--primary">
+              Test Fraud Engine <ArrowRight size={16} />
+            </Link>
+            <Link to="/dashboard" className="btn btn--ghost">
+              Open Review Queue
+            </Link>
           </div>
         </div>
-      </div>
 
-      <div className="hero-visual">
-        <div className="glow-circle"></div>
-
-        <div className="security-card">
-
-          <div className="security-card-top">
-            <span className="security-icon">
-              <ShieldCheck size={35} />
-            </span>
-
-            <span className="live-status">
-              <span className="status-dot"></span>
-              SYSTEM ACTIVE
-            </span>
-          </div>
-
-          <div className="security-heading">
-            <p>Transaction Security</p>
-            <h2>Protected</h2>
-            <span>
-              Intelligent fraud monitoring enabled
-            </span>
-          </div>
-
-          <div className="security-divider"></div>
-
-          <div className="security-metrics">
-            <div>
-              <Activity size={20} />
-              <span>Real-time analysis</span>
-              <strong>Active</strong>
+        <div className="hero__visual" aria-hidden="true">
+          <div className="visual-header">
+            <div className="visual-title">
+              <span className="live-pulse"></span> Live Ingestion Stream
             </div>
-
-            <div>
-              <Zap size={20} />
-              <span>Fraud detection</span>
-              <strong>Enabled</strong>
-            </div>
-
-            <div>
-              <LockKeyhole size={20} />
-              <span>Payment security</span>
-              <strong>Protected</strong>
+            <div style={{ fontSize: '0.75rem', color: 'rgba(255,255,255,0.5)' }}>
+              Dual Layer Active
             </div>
           </div>
 
-          <div className="security-bottom">
-            <ShieldCheck size={17} />
-            SentinelPay Security Engine
+          <div className="tx-grid">
+            {nodes.map((n, idx) => (
+              <div key={idx} className="tx-node-card">
+                <div className={`tx-node tx-node--${n.status}`} />
+                <span className="tx-node-id">{n.id}</span>
+              </div>
+            ))}
           </div>
 
-        </div>
-
-        <div className="floating-badge">
-          <ShieldCheck size={18} />
-          <div>
-            <strong>Smart Security</strong>
-            <span>Always monitoring</span>
+          <div style={{ marginTop: '20px', paddingTop: '12px', borderTop: '1px solid rgba(255,255,255,0.08)', display: 'flex', justifyContent: 'space-between', fontSize: '0.78rem', color: 'rgba(255,255,255,0.6)' }}>
+            <span><strong style={{ color: '#12857A' }}>●</strong> Safe: 75%</span>
+            <span><strong style={{ color: '#C1401F' }}>●</strong> Flagged: 25%</span>
+            <span>Avg Latency: 12ms</span>
           </div>
         </div>
-
       </div>
     </section>
   );
 }
-
-export default Hero;

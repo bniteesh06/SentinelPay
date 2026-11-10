@@ -1,0 +1,159 @@
+{
+  "seed": [
+    {
+      "transactionId": "TXN-9042",
+      "sender": "Robert King",
+      "amount": 6500.0,
+      "origin": "foreign_high_risk",
+      "country": "International",
+      "isForeign": true,
+      "timeHour": 2,
+      "velocity": 5,
+      "locationMatch": false,
+      "riskScore": 95,
+      "status": "FLAGGED",
+      "reasons": [
+        "High value transaction (> $5,000)",
+        "High-risk international IP jurisdiction",
+        "Unusual midnight hour (2:00 AM)",
+        "Velocity spike (5 txns in 15 mins)",
+        "Billing location and device IP mismatch"
+      ],
+      "reviewedBy": null,
+      "reviewedAt": null,
+      "reviewerNotes": null
+    },
+    {
+      "transactionId": "TXN-6521",
+      "sender": "Emily Watson",
+      "amount": 45.0,
+      "origin": "domestic",
+      "country": "Domestic",
+      "isForeign": false,
+      "timeHour": 14,
+      "velocity": 1,
+      "locationMatch": true,
+      "riskScore": 5,
+      "status": "SAFE",
+      "reasons": ["Standard baseline matched"],
+      "reviewedBy": null,
+      "reviewedAt": null,
+      "reviewerNotes": null
+    },
+    {
+      "transactionId": "TXN-7734",
+      "sender": "Marcus Vance",
+      "amount": 2400.0,
+      "origin": "foreign",
+      "country": "International",
+      "isForeign": true,
+      "timeHour": 3,
+      "velocity": 2,
+      "locationMatch": true,
+      "riskScore": 57,
+      "status": "FLAGGED",
+      "reasons": [
+        "Elevated transaction amount (> $2,000)",
+        "Cross-border foreign card payment",
+        "Unusual midnight hour (3:00 AM)",
+        "Elevated velocity (2 txns)"
+      ],
+      "reviewedBy": null,
+      "reviewedAt": null,
+      "reviewerNotes": null
+    },
+    {
+      "transactionId": "TXN-1209",
+      "sender": "Sophia Chen",
+      "amount": 128.5,
+      "origin": "domestic",
+      "country": "Domestic",
+      "isForeign": false,
+      "timeHour": 11,
+      "velocity": 1,
+      "locationMatch": true,
+      "riskScore": 5,
+      "status": "SAFE",
+      "reasons": ["Standard baseline matched"],
+      "reviewedBy": null,
+      "reviewedAt": null,
+      "reviewerNotes": null
+    },
+    {
+      "transactionId": "TXN-4482",
+      "sender": "Liam Gallagher",
+      "amount": 7200.0,
+      "origin": "foreign_high_risk",
+      "country": "International",
+      "isForeign": true,
+      "timeHour": 1,
+      "velocity": 4,
+      "locationMatch": false,
+      "riskScore": 99,
+      "status": "FLAGGED",
+      "reasons": [
+        "High value transaction (> $5,000)",
+        "High-risk international IP jurisdiction",
+        "Unusual midnight hour (1:00 AM)",
+        "Velocity spike (4 txns in 15 mins)",
+        "Billing location and device IP mismatch"
+      ],
+      "reviewedBy": null,
+      "reviewedAt": null,
+      "reviewerNotes": null
+    }
+  ],
+  "stream": [
+    {
+      "sender": "Alex Morgan",
+      "merchant": "Online Electronics",
+      "type": "Shopping",
+      "amount": 6500,
+      "origin": "foreign_high_risk",
+      "timeHour": 2,
+      "velocity": 5,
+      "locationMatch": false
+    },
+    {
+      "sender": "Sarah Wilson",
+      "merchant": "Grocery Store",
+      "type": "Groceries",
+      "amount": 45.5,
+      "origin": "domestic",
+      "timeHour": 12,
+      "velocity": 1,
+      "locationMatch": true
+    },
+    {
+      "sender": "David Thomas",
+      "merchant": "Travel Services",
+      "type": "Travel",
+      "amount": 2800,
+      "origin": "foreign",
+      "timeHour": 3,
+      "velocity": 2,
+      "locationMatch": true
+    },
+    {
+      "sender": "Elena Rostova",
+      "merchant": "Crypto Exchange Hub",
+      "type": "Transfer",
+      "amount": 8900,
+      "origin": "foreign_high_risk",
+      "timeHour": 1,
+      "velocity": 4,
+      "locationMatch": false
+    },
+    {
+      "sender": "James O'Connor",
+      "merchant": "Coffee Roasters",
+      "type": "Dining",
+      "amount": 14.75,
+      "origin": "domestic",
+      "timeHour": 9,
+      "velocity": 1,
+      "locationMatch": true
+    }
+  ]
+}
+
