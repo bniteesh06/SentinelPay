@@ -5,5 +5,4 @@ server/node_modules/
 .env
 .env.local
 *.log
-
-package.json
+.env.example
